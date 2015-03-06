@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8"/>
+	<title>Dates</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<script src="moment.min.js"></script>
+</head>
+<body>
+
+  <h1>Dates</h1>
+
+  <ul>
+    <li id="murica"></li>
+    <script charset="utf-8">
+      document.getElementById("murica").innerHTML = "We arrived in the US " + moment("20140936", "YYYYMMDD").fromNow();
+    </script>
+
+    <li id="quitSmoking"></li>
+    <script charset="utf-8">
+      document.getElementById("quitSmoking").innerHTML = "I quit smoking " + moment("20131101", "YYYYMMDD").fromNow();
+    </script>
+
+    <li id="ollieBorn"></li>
+    <script charset="utf-8">
+      document.getElementById("ollieBorn").innerHTML = "Ollie was born " + moment("20120910", "YYYYMMDD").fromNow();
+    </script>
+
+    <li id="gotMarried"></li>
+    <script charset="utf-8">
+      document.getElementById("gotMarried").innerHTML = "Jane and I got married " + moment("20100626", "YYYYMMDD").fromNow();
+    </script>
+
+    <li id="gotTogether"></li>
+    <script charset="utf-8">
+      document.getElementById("gotTogether").innerHTML = "Jane and I got together " + moment("20060819", "YYYYMMDD").fromNow();
+    </script>
+
+    <li id="andyBorn"></li>
+    <script charset="utf-8">
+      document.getElementById("andyBorn").innerHTML = "Andy was born " + moment("19830516", "YYYYMMDD").fromNow();
+    </script>
+
+    <li id="janeBorn"></li>
+    <script charset="utf-8">
+      document.getElementById("janeBorn").innerHTML = "Jane was born " + moment("19751211", "YYYYMMDD").fromNow();
+    </script>
+  </ul>
+
+</body>
+</html>
