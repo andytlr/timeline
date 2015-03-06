@@ -5,17 +5,36 @@
 	<meta charset="utf-8"/>
 	<title>Dates</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-	<script src="moment.min.js"></script>
 
 	<script charset="utf-8">
-		var currentTime = new Date();
-		var thingThatHappened = new Date('2014/09/26');
-		var timeDiff = currentTime - thingThatHappened;
-		var milisecondsInASecond = 1000;
-		var secondsInAnHour = 3600;
-		var hoursInADay = 24;
-		var daysInAMonth = 30;
-		console.log((((timeDiff/milisecondsInASecond)/secondsInAnHour)/hoursInADay)/daysInAMonth)
+		function timeSince(date) {
+
+	    var seconds = Math.floor((new Date() - date) / 1000);
+
+	    var interval = Math.floor(seconds / 31536000);
+
+	    if (interval > 1) {
+	        return interval + " years";
+	    }
+	    interval = Math.floor(seconds / 2592000);
+	    if (interval > 1) {
+	        return interval + " months";
+	    }
+	    interval = Math.floor(seconds / 86400);
+	    if (interval > 1) {
+	        return interval + " days";
+	    }
+	    interval = Math.floor(seconds / 3600);
+	    if (interval > 1) {
+	        return interval + " hours";
+	    }
+	    interval = Math.floor(seconds / 60);
+	    if (interval > 1) {
+	        return interval + " minutes";
+	    }
+	    return Math.floor(seconds) + " seconds";
+		}
+
 	</script>
 
 	<style media="screen">
@@ -37,37 +56,37 @@
   <ul>
     <li id="murica"></li>
     <script charset="utf-8">
-      document.getElementById("murica").innerHTML = "🇺🇸 We arrived in the US " + moment("20140926", "YYYYMMDD").fromNow();
+      document.getElementById("murica").innerHTML = "🍟 We arrived in the US " + timeSince(new Date('2014/09/26')) + " ago";
   	</script>
 
     <li id="quitSmoking"></li>
     <script charset="utf-8">
-      document.getElementById("quitSmoking").innerHTML = "🚬 I quit smoking " + moment("20131101", "YYYYMMDD").fromNow();
+      document.getElementById("quitSmoking").innerHTML = "🚬 I quit smoking " + timeSince(new Date('2013/11/01')) + " ago";
     </script>
 
     <li id="ollieBorn"></li>
     <script charset="utf-8">
-      document.getElementById("ollieBorn").innerHTML = "👶 Ollie was born " + moment("20120910", "YYYYMMDD").fromNow();
+      document.getElementById("ollieBorn").innerHTML = "👶 Ollie was born " + timeSince(new Date('2012/09/10')) + " ago";
     </script>
 
     <li id="gotMarried"></li>
     <script charset="utf-8">
-      document.getElementById("gotMarried").innerHTML = "💒 Jane and I got married " + moment("20100626", "YYYYMMDD").fromNow();
+      document.getElementById("gotMarried").innerHTML = "💒 Jane and I got married " + timeSince(new Date('2010/06/26')) + " ago";
     </script>
 
     <li id="gotTogether"></li>
     <script charset="utf-8">
-      document.getElementById("gotTogether").innerHTML = "💑 Jane and I got together " + moment("20060819", "YYYYMMDD").fromNow();
+      document.getElementById("gotTogether").innerHTML = "💑 Jane and I got together " + timeSince(new Date('2006/08/19')) + " ago";
     </script>
 
     <li id="andyBorn"></li>
     <script charset="utf-8">
-      document.getElementById("andyBorn").innerHTML = "👨 Andy was born " + moment("19830516", "YYYYMMDD").fromNow();
+      document.getElementById("andyBorn").innerHTML = "👨 Andy was born " + timeSince(new Date('1983/05/16')) + " ago";
     </script>
 
     <li id="janeBorn"></li>
     <script charset="utf-8">
-      document.getElementById("janeBorn").innerHTML = "👩 Jane was born " + moment("19751211", "YYYYMMDD").fromNow();
+      document.getElementById("janeBorn").innerHTML = "👩 Jane was born " + timeSince(new Date('1975/12/11')) + " ago";
     </script>
   </ul>
 
