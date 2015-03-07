@@ -20,7 +20,26 @@
 			padding-left: 0;
 		}
 		li {
-			padding-bottom: 25px;
+			margin-bottom: 25px;
+			padding: 2px 0 5px 0;
+			background: #fff;
+		}
+		li:before {
+			content: "";
+			width: 1px;
+			height: 120px;
+			/*left: 50%;*/
+			z-index: -1;
+			position: absolute;
+			display: block;
+			background: #dadada;
+
+			left: 0; right: 0;
+			margin: auto;
+		}
+		li:last-of-type:before {
+			background: blue;
+			display: none;
 		}
 		p {
 			margin: 0.5em;
@@ -133,7 +152,15 @@
 				var ampm = "pm";
 			}
 
-			return hours + ":" + minutes + ampm;
+			if (minutes < 10) {
+				var minutes = "0" + minutes
+			}
+
+			if (seconds < 10) {
+				var seconds = "0" + seconds
+			}
+
+			return hours + ":" + minutes + ":" + seconds + ampm;
 		}
 
 	</script>
@@ -144,10 +171,17 @@
     <li>
 			<p class="emoji">📅</p>
 			<p id="today"></p>
+			<p id="time" class="small"></p>
 		</li>
     <script charset="utf-8">
-			var today = new Date();
-      document.getElementById("today").innerHTML = "Today is " + formatDate(new Date());
+			function setTime() {
+				var today = new Date();
+	      document.getElementById("today").innerHTML = "Today is " + formatDate(today);
+				document.getElementById("time").innerHTML = formatTime(today);
+			}
+
+			setTime();
+			setInterval(setTime, 1000);
   	</script>
 
     <li>
