@@ -144,11 +144,11 @@
 			var hours = date.getHours();
 			var minutes = date.getMinutes();
 			var seconds = date.getSeconds();
-			var ampm = "am";
+			var ampm = " AM";
 
 			if (hours > 12) {
 				var hours = hours - 12;
-				var ampm = "pm";
+				var ampm = " PM";
 			}
 
 			if (minutes < 10) {
@@ -232,12 +232,6 @@
 			<p id="andyTimeAgo"></p>
 			<p id="andyDate" class="small"></p>
 		</li>
-
-    <li>
-			<p class="emoji">👩</p>
-			<p id="janeTimeAgo"></p>
-			<p id="janeDate" class="small"></p>
-		</li>
   </ul>
 
 	<script charset="utf-8">
@@ -285,10 +279,6 @@
 			var andy = new Date('1983/05/16')
 			document.getElementById("andyTimeAgo").innerHTML = "Andy is " + timeSince(andy) + " old";
 			document.getElementById("andyDate").innerHTML = "Born " + formatDate(andy);
-
-			var jane = new Date('1975/12/11')
-			document.getElementById("janeTimeAgo").innerHTML = "Jane is " + timeSince(jane) + " old";
-			document.getElementById("janeDate").innerHTML = "Born " + formatDate(jane);
 		}
 
 		setAndUpdateContent();
