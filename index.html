@@ -151,13 +151,24 @@
   	</script>
 
     <li>
+			<p class="emoji">📷</p>
+			<p id="instagramTimeAgo"></p>
+			<p id="instagramDate" class="small"></p>
+		</li>
+    <script charset="utf-8">
+			var instagram = new Date('2014/10/06') // This is FB start date
+      document.getElementById("instagramTimeAgo").innerHTML = "I started at Instagram " + timeSince(instagram) + " ago";
+			document.getElementById("instagramDate").innerHTML = formatDate(instagram);
+  	</script>
+
+    <li>
 			<p class="emoji">🍟</p>
 			<p id="muricaTimeAgo"></p>
 			<p id="muricaDate" class="small"></p>
 		</li>
     <script charset="utf-8">
 			var murica = new Date('2014/09/26')
-      document.getElementById("muricaTimeAgo").innerHTML = "We moved to the US " + timeSince(murica) + " ago";
+      document.getElementById("muricaTimeAgo").innerHTML = "We moved to the U.S. " + timeSince(murica) + " ago";
 			document.getElementById("muricaDate").innerHTML = formatDate(murica);
   	</script>
 
@@ -225,6 +236,17 @@
 			var jandy = new Date('2006/08/19')
       document.getElementById("jandyTimeAgo").innerHTML = "Jane and I got together " + timeSince(jandy) + " ago";
 			document.getElementById("jandyDate").innerHTML = formatDate(jandy);
+    </script>
+
+    <li>
+			<p class="emoji">💼</p>
+			<p id="smartTimeAgo"></p>
+			<p id="smartDate" class="small"></p>
+		</li>
+    <script charset="utf-8">
+			var smart = new Date('2004/03/31') // Can't remember day.
+      document.getElementById("smartTimeAgo").innerHTML = "I got my first design job " + timeSince(smart) + " ago";
+			document.getElementById("smartDate").innerHTML = formatDate(smart);
     </script>
 
     <li>
