@@ -167,13 +167,54 @@
 			return hours + ":" + minutes + ampm;
 		}
 
+		function emojiClock() {
+			hours = new Date().getHours()
+			if (hours == 1 || hours == 13) {
+				return "🕐";
+			}
+			if (hours == 2 || hours == 14) {
+				return "🕑";
+			}
+			if (hours == 3 || hours == 15) {
+				return "🕒";
+			}
+			if (hours == 4 || hours == 16) {
+				return "🕓";
+			}
+			if (hours == 5 || hours == 17) {
+				return "🕔";
+			}
+			if (hours == 6 || hours == 18) {
+				return "🕕";
+			}
+			if (hours == 7 || hours == 19) {
+				return "🕖";
+			}
+			if (hours == 8 || hours == 20) {
+				return "🕗";
+			}
+			if (hours == 9 || hours == 21) {
+				return "🕘";
+			}
+			if (hours == 10 || hours == 22) {
+				return "🕙";
+			}
+			if (hours == 11 || hours == 23) {
+				return "🕚";
+			}
+			if (hours == 12 || hours == 24) {
+				return "🕛";
+			}
+			return "📅"; // If it doesn't work show calendar.
+		}
+
 	</script>
 </head>
 <body>
 
   <ul>
     <li>
-			<p class="emoji">📅</p>
+			<p id="emojiClock" class="emoji"></p>
 			<p id="today"></p>
 			<p id="time" class="small"></p>
 		</li>
@@ -247,6 +288,8 @@
 
 	<script charset="utf-8">
 		function setAndUpdateContent() {
+			document.getElementById("emojiClock").innerHTML = emojiClock();
+
 			var today = new Date();
 			document.getElementById("today").innerHTML = "Today is " + formatDate(today);
 			document.getElementById("time").innerHTML = formatTime(today);
