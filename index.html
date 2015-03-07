@@ -137,11 +137,22 @@
 
 	    var year = date.getFullYear();
 			var currentYear = new Date().getFullYear();
+			var today = new Date();
 
+			// If it's today, return the month first.
+			// September 7
+			if (date.getFullYear() == today.getFullYear() && date.getMonth() == today.getMonth()) {
+				return month + " " + day;
+			}
+
+			// If it's the current year, drop the year.
+			// 7 September
 			if (year == currentYear) {
 				return day + " " + month;
 			}
 
+			// Otherwise return the full date
+			// 7 September 2013
 			return day + " " + month + " " + year;
 		}
 
@@ -288,9 +299,9 @@
 
 	<script charset="utf-8">
 		function setAndUpdateContent() {
-			document.getElementById("emojiClock").innerHTML = emojiClock();
 
 			var today = new Date();
+			document.getElementById("emojiClock").innerHTML = emojiClock();
 			document.getElementById("today").innerHTML = "Today is " + formatDate(today);
 			document.getElementById("time").innerHTML = formatTime(today);
 
