@@ -28,12 +28,10 @@
 			content: "";
 			width: 1px;
 			height: 120px;
-			/*left: 50%;*/
 			z-index: -1;
 			position: absolute;
 			display: block;
 			background: #dadada;
-
 			left: 0; right: 0;
 			margin: auto;
 		}
@@ -46,7 +44,8 @@
 			margin-bottom: 3px;
 		}
 		.emoji {
-
+			position: relative;
+			left: 1px;
 		}
 		.small {
 			font-size: 0.8em;
@@ -173,138 +172,128 @@
 			<p id="today"></p>
 			<p id="time" class="small"></p>
 		</li>
-    <script charset="utf-8">
-			function setTime() {
-				var today = new Date();
-	      document.getElementById("today").innerHTML = "Today is " + formatDate(today);
-				document.getElementById("time").innerHTML = formatTime(today);
-			}
-
-			setTime();
-			setInterval(setTime, 1000);
-  	</script>
 
     <li>
 			<p class="emoji">📷</p>
 			<p id="instagramTimeAgo"></p>
 			<p id="instagramDate" class="small"></p>
 		</li>
-    <script charset="utf-8">
-			var instagram = new Date('2014/10/06') // This is FB start date
-      document.getElementById("instagramTimeAgo").innerHTML = "I started at Instagram " + timeSince(instagram) + " ago";
-			document.getElementById("instagramDate").innerHTML = formatDate(instagram);
-  	</script>
 
     <li>
 			<p class="emoji">🍟</p>
 			<p id="muricaTimeAgo"></p>
 			<p id="muricaDate" class="small"></p>
 		</li>
-    <script charset="utf-8">
-			var murica = new Date('2014/09/26')
-      document.getElementById("muricaTimeAgo").innerHTML = "We moved to the U.S. " + timeSince(murica) + " ago";
-			document.getElementById("muricaDate").innerHTML = formatDate(murica);
-  	</script>
 
     <li>
 			<p class="emoji">🚬</p>
 			<p id="smokingTimeAgo"></p>
 			<p id="smokingDate" class="small"></p>
 		</li>
-    <script charset="utf-8">
-			var smoking = new Date('2013/11/01')
-      document.getElementById("smokingTimeAgo").innerHTML = "I quit smoking " + timeSince(smoking) + " ago";
-			document.getElementById("smokingDate").innerHTML = formatDate(smoking);
-    </script>
 
     <li>
 			<p class="emoji">🏡</p>
 			<p id="houseTimeAgo"></p>
 			<p id="houseDate" class="small"></p>
 		</li>
-    <script charset="utf-8">
-			var house = new Date('2013/09/23')
-      document.getElementById("houseTimeAgo").innerHTML = "We got our house " + timeSince(house) + " ago";
-			document.getElementById("houseDate").innerHTML = formatDate(house);
-    </script>
 
     <li>
 			<p class="emoji">🚴</p>
 			<p id="ridingTimeAgo"></p>
 			<p id="ridingDate" class="small"></p>
 		</li>
-    <script charset="utf-8">
-			var riding = new Date('2013/04/30')
-      document.getElementById("ridingTimeAgo").innerHTML = "I started riding " + timeSince(riding) + " ago";
-			document.getElementById("ridingDate").innerHTML = formatDate(riding);
-    </script>
 
     <li>
 			<p class="emoji">👶</p>
 			<p id="ollieTimeAgo"></p>
 			<p id="ollieDate" class="small"></p>
 		</li>
-    <script charset="utf-8">
-			var ollie = new Date('2012/09/10')
-      document.getElementById("ollieTimeAgo").innerHTML = "Ollie is " + timeSince(ollie) + " old";
-      document.getElementById("ollieDate").innerHTML = "Born " + formatDate(ollie);
-    </script>
 
     <li>
 			<p class="emoji">💒</p>
 			<p id="weddingTimeAgo"></p>
 			<p id="weddingDate" class="small"></p>
 		</li>
-    <script charset="utf-8">
-			var wedding = new Date('2010/06/26')
-      document.getElementById("weddingTimeAgo").innerHTML = "Jane and I got married " + timeSince(wedding) + " ago";
-			document.getElementById("weddingDate").innerHTML = formatDate(wedding);
-    </script>
 
     <li>
 			<p class="emoji">💑</p>
 			<p id="jandyTimeAgo"></p>
 			<p id="jandyDate" class="small"></p>
 		</li>
-    <script charset="utf-8">
-			var jandy = new Date('2006/08/19')
-      document.getElementById("jandyTimeAgo").innerHTML = "Jane and I got together " + timeSince(jandy) + " ago";
-			document.getElementById("jandyDate").innerHTML = formatDate(jandy);
-    </script>
 
     <li>
 			<p class="emoji">💼</p>
 			<p id="smartTimeAgo"></p>
 			<p id="smartDate" class="small"></p>
 		</li>
-    <script charset="utf-8">
-			var smart = new Date('2004/03/31') // Can't remember day.
-      document.getElementById("smartTimeAgo").innerHTML = "I got my first design job " + timeSince(smart) + " ago";
-			document.getElementById("smartDate").innerHTML = formatDate(smart);
-    </script>
 
     <li>
 			<p class="emoji">👨</p>
 			<p id="andyTimeAgo"></p>
 			<p id="andyDate" class="small"></p>
 		</li>
-    <script charset="utf-8">
-			var andy = new Date('1983/05/16')
-      document.getElementById("andyTimeAgo").innerHTML = "Andy is " + timeSince(andy) + " old";
-			document.getElementById("andyDate").innerHTML = "Born " + formatDate(andy);
-    </script>
 
     <li>
 			<p class="emoji">👩</p>
 			<p id="janeTimeAgo"></p>
 			<p id="janeDate" class="small"></p>
 		</li>
-    <script charset="utf-8">
-			var jane = new Date('1975/12/11')
-      document.getElementById("janeTimeAgo").innerHTML = "Jane is " + timeSince(jane) + " old";
-			document.getElementById("janeDate").innerHTML = "Born " + formatDate(jane);
-    </script>
   </ul>
+
+	<script charset="utf-8">
+		function setAndUpdateContent() {
+			var today = new Date();
+			document.getElementById("today").innerHTML = "Today is " + formatDate(today);
+			document.getElementById("time").innerHTML = formatTime(today);
+
+			var instagram = new Date('2014/10/06') // This is FB start date
+			document.getElementById("instagramTimeAgo").innerHTML = "I started at Instagram " + timeSince(instagram) + " ago";
+			document.getElementById("instagramDate").innerHTML = formatDate(instagram);
+
+			var murica = new Date('2014/09/26')
+			document.getElementById("muricaTimeAgo").innerHTML = "We moved to the U.S. " + timeSince(murica) + " ago";
+			document.getElementById("muricaDate").innerHTML = formatDate(murica);
+
+			var smoking = new Date('2013/11/01')
+			document.getElementById("smokingTimeAgo").innerHTML = "I quit smoking " + timeSince(smoking) + " ago";
+			document.getElementById("smokingDate").innerHTML = formatDate(smoking);
+
+			var house = new Date('2013/09/23')
+			document.getElementById("houseTimeAgo").innerHTML = "We got our house " + timeSince(house) + " ago";
+			document.getElementById("houseDate").innerHTML = formatDate(house);
+
+			var riding = new Date('2013/04/30')
+			document.getElementById("ridingTimeAgo").innerHTML = "I started riding " + timeSince(riding) + " ago";
+			document.getElementById("ridingDate").innerHTML = formatDate(riding);
+
+			var ollie = new Date('2012/09/10')
+			document.getElementById("ollieTimeAgo").innerHTML = "Ollie is " + timeSince(ollie) + " old";
+			document.getElementById("ollieDate").innerHTML = "Born " + formatDate(ollie);
+
+			var wedding = new Date('2010/06/26')
+			document.getElementById("weddingTimeAgo").innerHTML = "Jane and I got married " + timeSince(wedding) + " ago";
+			document.getElementById("weddingDate").innerHTML = formatDate(wedding);
+
+			var jandy = new Date('2006/08/19')
+			document.getElementById("jandyTimeAgo").innerHTML = "Jane and I got together " + timeSince(jandy) + " ago";
+			document.getElementById("jandyDate").innerHTML = formatDate(jandy);
+
+			var smart = new Date('2004/03/31') // Can't remember day.
+			document.getElementById("smartTimeAgo").innerHTML = "I got my first design job " + timeSince(smart) + " ago";
+			document.getElementById("smartDate").innerHTML = formatDate(smart);
+
+			var andy = new Date('1983/05/16')
+			document.getElementById("andyTimeAgo").innerHTML = "Andy is " + timeSince(andy) + " old";
+			document.getElementById("andyDate").innerHTML = "Born " + formatDate(andy);
+
+			var jane = new Date('1975/12/11')
+			document.getElementById("janeTimeAgo").innerHTML = "Jane is " + timeSince(jane) + " old";
+			document.getElementById("janeDate").innerHTML = "Born " + formatDate(jane);
+		}
+
+		setAndUpdateContent();
+		setInterval(setAndUpdateContent, 1000);
+	</script>
 
 </body>
 </html>
