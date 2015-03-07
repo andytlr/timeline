@@ -221,6 +221,12 @@
 		</li>
 
     <li>
+			<p class="emoji">🐩</p>
+			<p id="lilyTimeAgo"></p>
+			<p id="lilyDate" class="small"></p>
+		</li>
+
+    <li>
 			<p class="emoji">💑</p>
 			<p id="jandyTimeAgo"></p>
 			<p id="jandyDate" class="small"></p>
@@ -272,6 +278,10 @@
 			var wedding = new Date('2010/06/26')
 			document.getElementById("weddingTimeAgo").innerHTML = "Jane and I got married " + timeSince(wedding) + " ago";
 			document.getElementById("weddingDate").innerHTML = formatDate(wedding);
+
+			var lily = new Date('2006/12/05') // Based on Metadata from photos.
+			document.getElementById("lilyTimeAgo").innerHTML = "We got Lily " + timeSince(lily) + " ago";
+			document.getElementById("lilyDate").innerHTML = formatDate(lily);
 
 			var jandy = new Date('2006/08/19')
 			document.getElementById("jandyTimeAgo").innerHTML = "Jane and I got together " + timeSince(jandy) + " ago";
