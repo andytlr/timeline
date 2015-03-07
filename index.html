@@ -122,6 +122,20 @@
 			return day + " " + month + " " + year;
 		}
 
+		function formatTime(date) {
+			var hours = date.getHours();
+			var minutes = date.getMinutes();
+			var seconds = date.getSeconds();
+			var ampm = "am";
+
+			if (hours > 12) {
+				var hours = hours - 12;
+				var ampm = "pm";
+			}
+
+			return hours + ":" + minutes + ampm;
+		}
+
 	</script>
 </head>
 <body>
@@ -132,7 +146,8 @@
 			<p id="today"></p>
 		</li>
     <script charset="utf-8">
-      document.getElementById("today").innerHTML = "Today is " + formatDate(new Date());
+			var today = new Date();
+      document.getElementById("today").innerHTML = "Today is " + formatDate(new Date()) + ". It's " + formatTime(today) + ".";
   	</script>
 
     <li>
