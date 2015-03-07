@@ -65,6 +65,63 @@
 	    return Math.floor(seconds) + " seconds";
 		}
 
+		function formatDate(date) {
+			var day = date.getDate();
+	    var month = date.getMonth() + 1; // Months are zero based
+
+			if (month == 1) {
+				var month = "January"
+			}
+
+			if (month == 2) {
+				var month = "February"
+			}
+
+			if (month == 3) {
+				var month = "March"
+			}
+
+			if (month == 4) {
+				var month = "April"
+			}
+
+			if (month == 5) {
+				var month = "May"
+			}
+
+			if (month == 6) {
+				var month = "June"
+			}
+
+			if (month == 7) {
+				var month = "July"
+			}
+
+			if (month == 8) {
+				var month = "August"
+			}
+
+			if (month == 9) {
+				var month = "September"
+			}
+
+			if (month == 10) {
+				var month = "October"
+			}
+
+			if (month == 11) {
+				var month = "November"
+			}
+
+			if (month == 12) {
+				var month = "December"
+			}
+
+	    var year = date.getFullYear();
+
+			return day + " " + month + " " + year;
+		}
+
 	</script>
 </head>
 <body>
@@ -78,7 +135,7 @@
     <script charset="utf-8">
 			var murica = new Date('2014/09/26')
       document.getElementById("muricaTimeAgo").innerHTML = "We moved to the US " + timeSince(murica) + " ago";
-			document.getElementById("muricaDate").innerHTML = murica.toDateString();
+			document.getElementById("muricaDate").innerHTML = formatDate(murica);
   	</script>
 
     <li>
@@ -89,7 +146,7 @@
     <script charset="utf-8">
 			var smoking = new Date('2013/11/01')
       document.getElementById("smokingTimeAgo").innerHTML = "I quit smoking " + timeSince(smoking) + " ago";
-			document.getElementById("smokingDate").innerHTML = smoking.toDateString();
+			document.getElementById("smokingDate").innerHTML = formatDate(smoking);
     </script>
 
     <li>
@@ -100,7 +157,7 @@
     <script charset="utf-8">
 			var house = new Date('2013/09/23')
       document.getElementById("houseTimeAgo").innerHTML = "We took posession of our house " + timeSince(house) + " ago";
-			document.getElementById("houseDate").innerHTML = house.toDateString();
+			document.getElementById("houseDate").innerHTML = formatDate(house);
     </script>
 
     <li>
@@ -111,7 +168,7 @@
     <script charset="utf-8">
 			var riding = new Date('2013/04/30')
       document.getElementById("ridingTimeAgo").innerHTML = "I started riding " + timeSince(riding) + " ago";
-			document.getElementById("ridingDate").innerHTML = riding.toDateString();
+			document.getElementById("ridingDate").innerHTML = formatDate(riding);
     </script>
 
     <li>
@@ -122,7 +179,7 @@
     <script charset="utf-8">
 			var ollie = new Date('2012/09/10')
       document.getElementById("ollieTimeAgo").innerHTML = "Ollie is " + timeSince(ollie) + " old";
-      document.getElementById("ollieDate").innerHTML = ollie.toDateString();
+      document.getElementById("ollieDate").innerHTML = formatDate(ollie);
     </script>
 
     <li>
@@ -133,7 +190,7 @@
     <script charset="utf-8">
 			var wedding = new Date('2010/06/26')
       document.getElementById("weddingTimeAgo").innerHTML = "Jane and I got married " + timeSince(wedding) + " ago";
-			document.getElementById("weddingDate").innerHTML = wedding.toDateString();
+			document.getElementById("weddingDate").innerHTML = formatDate(wedding);
     </script>
 
     <li>
@@ -144,7 +201,7 @@
     <script charset="utf-8">
 			var jandy = new Date('2006/08/19')
       document.getElementById("jandyTimeAgo").innerHTML = "Jane and I got together " + timeSince(jandy) + " ago";
-			document.getElementById("jandyDate").innerHTML = jandy.toDateString();
+			document.getElementById("jandyDate").innerHTML = formatDate(jandy);
     </script>
 
     <li>
@@ -155,7 +212,7 @@
     <script charset="utf-8">
 			var andy = new Date('1983/05/16')
       document.getElementById("andyTimeAgo").innerHTML = "Andy is " + timeSince(andy) + " old";
-			document.getElementById("andyDate").innerHTML = andy.toDateString();
+			document.getElementById("andyDate").innerHTML = formatDate(andy);
     </script>
 
     <li>
@@ -166,7 +223,7 @@
     <script charset="utf-8">
 			var jane = new Date('1975/12/11')
       document.getElementById("janeTimeAgo").innerHTML = "Jane is " + timeSince(jane) + " old";
-			document.getElementById("janeDate").innerHTML = jane.toDateString();
+			document.getElementById("janeDate").innerHTML = formatDate(jane);
     </script>
   </ul>
 
