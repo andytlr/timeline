@@ -136,6 +136,11 @@
 			}
 
 	    var year = date.getFullYear();
+			var currentYear = new Date().getFullYear();
+
+			if (year == currentYear) {
+				return day + " " + month;
+			}
 
 			return day + " " + month + " " + year;
 		}
@@ -261,8 +266,8 @@
 			document.getElementById("ridingDate").innerHTML = formatDate(riding);
 
 			var ollie = new Date('2012/09/10')
-			document.getElementById("ollieTimeAgo").innerHTML = "Ollie is " + timeSince(ollie) + " old";
-			document.getElementById("ollieDate").innerHTML = "Born " + formatDate(ollie);
+			document.getElementById("ollieTimeAgo").innerHTML = "Ollie was born " + timeSince(ollie) + " ago";
+			document.getElementById("ollieDate").innerHTML = formatDate(ollie);
 
 			var wedding = new Date('2010/06/26')
 			document.getElementById("weddingTimeAgo").innerHTML = "Jane and I got married " + timeSince(wedding) + " ago";
