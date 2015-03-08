@@ -57,7 +57,11 @@
 	<script charset="utf-8">
 		function timeSince(date) {
 
-	    var seconds = (new Date() - date) / 1000;
+			if (new Date() - date < 0) {
+				var seconds = (date - new Date()) / 1000;
+			} else {
+				var seconds = (new Date() - date) / 1000;
+			}
 
 	    var interval = Math.round( (seconds / 31536000) * 10 ) / 10;
 
@@ -235,6 +239,12 @@
 <body>
 
   <ul>
+		<li>
+			<p class="emoji">⌚</p>
+			<p id="applewatchTimeAgo"></p>
+			<p id="applewatchDate" class="small"></p>
+		</li>
+
     <li>
 			<p id="emojiClock" class="emoji"></p>
 			<p id="today"></p>
@@ -310,6 +320,9 @@
 
 	<script charset="utf-8">
 		function setAndUpdateContent() {
+			var applewatch = new Date('2015/03/09 10:00')
+			document.getElementById("applewatchTimeAgo").innerHTML = "The Apple Watch event is in " + timeSince(applewatch);
+			document.getElementById("applewatchDate").innerHTML = formatDate(applewatch);
 
 			var today = new Date();
 			document.getElementById("emojiClock").innerHTML = emojiClock();
