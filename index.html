@@ -100,9 +100,35 @@
 	    return Math.floor(seconds) + " seconds";
 		}
 
-		function formatDate(date) {
+		function formatTime(date) {
+			var hours = date.getHours();
+			var minutes = date.getMinutes();
+			var seconds = date.getSeconds();
+			var ampm = " AM";
+
+			if (hours > 12) {
+				var hours = hours - 12;
+				var ampm = " PM";
+			}
+
+			if (minutes < 10) {
+				var minutes = "0" + minutes
+			}
+
+			if (seconds < 10) {
+				var seconds = "0" + seconds
+			}
+
+			return hours + ":" + minutes + ampm;
+		}
+
+		function formatLongDate(date) {
 			var day = date.getDate();
 	    var month = date.getMonth() + 1; // Months are zero based
+
+	    var year = date.getFullYear();
+			var currentYear = new Date().getFullYear();
+			var today = new Date();
 
 			if (month == 1) {
 				var month = "January"
@@ -152,58 +178,94 @@
 				var month = "December"
 			}
 
+			if (day == 1 || day == 21 ||  day == 31) {
+				return "Today is the " + day + "st of " + month;
+			}
+			if (day == 2 || day == 22) {
+				return "Today is the " + day + "nd of " + month;
+			}
+			if (day == 3 || day == 23) {
+				return "Today is the " + day + "rd of " + month;
+			}
+			if (day == 4 || day == 5 || day == 6 || day == 7 || day == 8 || day == 9 || day == 10 || day == 11 || day == 12 || day == 13 || day == 14 || day == 15 || day == 16 || day == 17 || day == 18 || day == 19 || day == 20 || day == 24 || day == 25 || day == 26 || day == 27 || day == 28 || day == 29 || day == 30) {
+				return "Today is the " + day + "th of " + month;
+			}
+		}
+
+		function formatDate(date) {
+			var hours = date.getHours();
+			var minutes = date.getMinutes();
+			var day = date.getDate();
+	    var month = date.getMonth() + 1; // Months are zero based
 	    var year = date.getFullYear();
+
 			var currentYear = new Date().getFullYear();
+			var currentDay = new Date().getDate();
 			var today = new Date();
 
-			// If it's today, return special formatting.
-			// Today is the 7th of September
-			if (date.getFullYear() == today.getFullYear() && date.getMonth() == today.getMonth() && date.getDate() == today.getDate()) {
-				if (day == 1 || day == 21 ||  day == 31) {
-					return "Today is the " + day + "st of " + month;
-				}
-				if (day == 2 || day == 22) {
-					return "Today is the " + day + "nd of " + month;
-				}
-				if (day == 3 || day == 23) {
-					return "Today is the " + day + "rd of " + month;
-				}
-				if (day == 4 || day == 5 || day == 6 || day == 7 || day == 8 || day == 9 || day == 10 || day == 11 || day == 12 || day == 13 || day == 14 || day == 15 || day == 16 || day == 17 || day == 18 || day == 19 || day == 20 || day == 24 || day == 25 || day == 26 || day == 27 || day == 28 || day == 29 || day == 30) {
-					return "Today is the " + day + "th of " + month;
-				}
+			if (month == 1) {
+				var month = "January"
 			}
 
-			// If it's the current year, drop the year.
+			if (month == 2) {
+				var month = "February"
+			}
+
+			if (month == 3) {
+				var month = "March"
+			}
+
+			if (month == 4) {
+				var month = "April"
+			}
+
+			if (month == 5) {
+				var month = "May"
+			}
+
+			if (month == 6) {
+				var month = "June"
+			}
+
+			if (month == 7) {
+				var month = "July"
+			}
+
+			if (month == 8) {
+				var month = "August"
+			}
+
+			if (month == 9) {
+				var month = "September"
+			}
+
+			if (month == 10) {
+				var month = "October"
+			}
+
+			if (month == 11) {
+				var month = "November"
+			}
+
+			if (month == 12) {
+				var month = "December"
+			}
+
+			// If it's the current year and a specific time is set.
+			// 7 September 10:00 AM
+			if (year == currentYear && hours != 00) {
+				return day + " " + month + " " + formatTime(date);
+			}
+
+			// If it's the current year and no time is set, drop the year and time.
 			// 7 September
 			if (year == currentYear) {
 				return day + " " + month;
 			}
 
-			// Otherwise return the full date
+			// Otherwise return the full date with no time.
 			// 7 September 2013
 			return day + " " + month + " " + year;
-		}
-
-		function formatTime(date) {
-			var hours = date.getHours();
-			var minutes = date.getMinutes();
-			var seconds = date.getSeconds();
-			var ampm = " AM";
-
-			if (hours > 12) {
-				var hours = hours - 12;
-				var ampm = " PM";
-			}
-
-			if (minutes < 10) {
-				var minutes = "0" + minutes
-			}
-
-			if (seconds < 10) {
-				var seconds = "0" + seconds
-			}
-
-			return hours + ":" + minutes + ampm;
 		}
 
 		function emojiClock() {
@@ -298,7 +360,7 @@
 
 		var today = new Date();
 		document.getElementById("emojiClock").innerHTML = emojiClock();
-		document.getElementById("today").innerHTML = formatDate(today);
+		document.getElementById("today").innerHTML = formatLongDate(today);
 		document.getElementById("time").innerHTML = formatTime(today);
 	}
 
