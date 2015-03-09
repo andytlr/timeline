@@ -44,8 +44,7 @@
 			margin-bottom: 3px;
 		}
 		.emoji {
-			/*position: relative;
-			left: 1px;*/
+
 		}
 		.small {
 			font-size: 0.8em;
@@ -55,6 +54,21 @@
 	</style>
 
 	<script charset="utf-8">
+		var milestones = {
+		  "applewatch": ["🍏", "The Apple Watch event is in", "2015/03/09 10:00", ""],
+		  "instagram": ["📷", "I started at Instagram", "2014/10/06", "ago"],
+		  "murica": ["🍟", "We moved to the U.S.", "2014/09/26", "ago"],
+		  "smoking": ["🚬", "I quit smoking", "2013/11/01", "ago"],
+		  "house": ["🏡", "We got our house", "2013/09/23", "ago"],
+		  "riding": ["🚴", "I started riding", "2013/04/30", "ago"],
+		  "ollie": ["👶", "Ollie was born", "2012/09/10", "ago"],
+		  "wedding": ["💒", "Jane and I got married", "2010/06/26", "ago"],
+		  "lily": ["🐩", "We got Lily", "2006/12/05", "ago"],
+		  "jandy": ["💑", "Jane and I got together", "2006/08/19", "ago"],
+		  "smart": ["💼", "I got my first design job", "2004/03/31", "ago"],
+		  "andy": ["👨", "Andy is", "1983/05/16", "old"]
+		}
+
 		function timeSince(date) {
 
 			if (new Date() - date < 0) {
@@ -87,9 +101,35 @@
 	    return Math.floor(seconds) + " seconds";
 		}
 
-		function formatDate(date) {
+		function formatTime(date) {
+			var hours = date.getHours();
+			var minutes = date.getMinutes();
+			var seconds = date.getSeconds();
+			var ampm = " AM";
+
+			if (hours > 12) {
+				var hours = hours - 12;
+				var ampm = " PM";
+			}
+
+			if (minutes < 10) {
+				var minutes = "0" + minutes
+			}
+
+			if (seconds < 10) {
+				var seconds = "0" + seconds
+			}
+
+			return hours + ":" + minutes + ampm;
+		}
+
+		function formatLongDate(date) {
 			var day = date.getDate();
 	    var month = date.getMonth() + 1; // Months are zero based
+
+	    var year = date.getFullYear();
+			var currentYear = new Date().getFullYear();
+			var today = new Date();
 
 			if (month == 1) {
 				var month = "January"
@@ -139,58 +179,94 @@
 				var month = "December"
 			}
 
+			if (day == 1 || day == 21 ||  day == 31) {
+				return "Today is the " + day + "st of " + month;
+			}
+			if (day == 2 || day == 22) {
+				return "Today is the " + day + "nd of " + month;
+			}
+			if (day == 3 || day == 23) {
+				return "Today is the " + day + "rd of " + month;
+			}
+			if (day == 4 || day == 5 || day == 6 || day == 7 || day == 8 || day == 9 || day == 10 || day == 11 || day == 12 || day == 13 || day == 14 || day == 15 || day == 16 || day == 17 || day == 18 || day == 19 || day == 20 || day == 24 || day == 25 || day == 26 || day == 27 || day == 28 || day == 29 || day == 30) {
+				return "Today is the " + day + "th of " + month;
+			}
+		}
+
+		function formatDate(date) {
+			var hours = date.getHours();
+			var minutes = date.getMinutes();
+			var day = date.getDate();
+	    var month = date.getMonth() + 1; // Months are zero based
 	    var year = date.getFullYear();
+
 			var currentYear = new Date().getFullYear();
+			var currentDay = new Date().getDate();
 			var today = new Date();
 
-			// If it's today, return special formatting.
-			// Today is the 7th of September
-			if (date.getFullYear() == today.getFullYear() && date.getMonth() == today.getMonth() && date.getDate() == today.getDate()) {
-				if (day == 1 || day == 21 ||  day == 31) {
-					return "Today is the " + day + "st of " + month;
-				}
-				if (day == 2 || day == 22) {
-					return "Today is the " + day + "nd of " + month;
-				}
-				if (day == 3 || day == 23) {
-					return "Today is the " + day + "rd of " + month;
-				}
-				if (day == 4 || day == 5 || day == 6 || day == 7 || day == 8 || day == 9 || day == 10 || day == 11 || day == 12 || day == 13 || day == 14 || day == 15 || day == 16 || day == 17 || day == 18 || day == 19 || day == 20 || day == 24 || day == 25 || day == 26 || day == 27 || day == 28 || day == 29 || day == 30) {
-					return "Today is the " + day + "th of " + month;
-				}
+			if (month == 1) {
+				var month = "January"
 			}
 
-			// If it's the current year, drop the year.
+			if (month == 2) {
+				var month = "February"
+			}
+
+			if (month == 3) {
+				var month = "March"
+			}
+
+			if (month == 4) {
+				var month = "April"
+			}
+
+			if (month == 5) {
+				var month = "May"
+			}
+
+			if (month == 6) {
+				var month = "June"
+			}
+
+			if (month == 7) {
+				var month = "July"
+			}
+
+			if (month == 8) {
+				var month = "August"
+			}
+
+			if (month == 9) {
+				var month = "September"
+			}
+
+			if (month == 10) {
+				var month = "October"
+			}
+
+			if (month == 11) {
+				var month = "November"
+			}
+
+			if (month == 12) {
+				var month = "December"
+			}
+
+			// If it's the current year and a specific time is set.
+			// 7 September 10:00 AM
+			if (year == currentYear && hours != 00) {
+				return day + " " + month + " " + formatTime(date);
+			}
+
+			// If it's the current year and no time is set, drop the year and time.
 			// 7 September
 			if (year == currentYear) {
 				return day + " " + month;
 			}
 
-			// Otherwise return the full date
+			// Otherwise return the full date with no time.
 			// 7 September 2013
 			return day + " " + month + " " + year;
-		}
-
-		function formatTime(date) {
-			var hours = date.getHours();
-			var minutes = date.getMinutes();
-			var seconds = date.getSeconds();
-			var ampm = " AM";
-
-			if (hours > 12) {
-				var hours = hours - 12;
-				var ampm = " PM";
-			}
-
-			if (minutes < 10) {
-				var minutes = "0" + minutes
-			}
-
-			if (seconds < 10) {
-				var seconds = "0" + seconds
-			}
-
-			return hours + ":" + minutes + ampm;
 		}
 
 		function emojiClock() {
@@ -238,145 +314,49 @@
 </head>
 <body>
 
-  <ul>
-		<li>
-			<p class="emoji">🍏</p>
-			<p id="applewatchTimeAgo"></p>
-			<p id="applewatchDate" class="small"></p>
-		</li>
-
+  <ul id="container">
     <li>
 			<p id="emojiClock" class="emoji"></p>
 			<p id="today"></p>
 			<p id="time" class="small"></p>
 		</li>
-
-    <li>
-			<p class="emoji">📷</p>
-			<p id="instagramTimeAgo"></p>
-			<p id="instagramDate" class="small"></p>
-		</li>
-
-    <li>
-			<p class="emoji">🍟</p>
-			<p id="muricaTimeAgo"></p>
-			<p id="muricaDate" class="small"></p>
-		</li>
-
-    <li>
-			<p class="emoji">🚬</p>
-			<p id="smokingTimeAgo"></p>
-			<p id="smokingDate" class="small"></p>
-		</li>
-
-    <li>
-			<p class="emoji">🏡</p>
-			<p id="houseTimeAgo"></p>
-			<p id="houseDate" class="small"></p>
-		</li>
-
-    <li>
-			<p class="emoji">🚴</p>
-			<p id="ridingTimeAgo"></p>
-			<p id="ridingDate" class="small"></p>
-		</li>
-
-    <li>
-			<p class="emoji">👶</p>
-			<p id="ollieTimeAgo"></p>
-			<p id="ollieDate" class="small"></p>
-		</li>
-
-    <li>
-			<p class="emoji">💒</p>
-			<p id="weddingTimeAgo"></p>
-			<p id="weddingDate" class="small"></p>
-		</li>
-
-    <li>
-			<p class="emoji">🐩</p>
-			<p id="lilyTimeAgo"></p>
-			<p id="lilyDate" class="small"></p>
-		</li>
-
-    <li>
-			<p class="emoji">💑</p>
-			<p id="jandyTimeAgo"></p>
-			<p id="jandyDate" class="small"></p>
-		</li>
-
-    <li>
-			<p class="emoji">💼</p>
-			<p id="smartTimeAgo"></p>
-			<p id="smartDate" class="small"></p>
-		</li>
-
-    <li>
-			<p class="emoji">👨</p>
-			<p id="andyTimeAgo"></p>
-			<p id="andyDate" class="small"></p>
-		</li>
   </ul>
 
-	<script charset="utf-8">
-		function setAndUpdateContent() {
-			var applewatch = new Date('2015/03/09 10:00')
-			document.getElementById("applewatchTimeAgo").innerHTML = "The Apple Watch event is in " + timeSince(applewatch);
-			document.getElementById("applewatchDate").innerHTML = formatDate(applewatch);
-
-			var today = new Date();
-			document.getElementById("emojiClock").innerHTML = emojiClock();
-			document.getElementById("today").innerHTML = formatDate(today);
-			document.getElementById("time").innerHTML = formatTime(today);
-
-			var instagram = new Date('2014/10/06') // This is FB start date
-			document.getElementById("instagramTimeAgo").innerHTML = "I started at Instagram " + timeSince(instagram) + " ago";
-			document.getElementById("instagramDate").innerHTML = formatDate(instagram);
-
-			var murica = new Date('2014/09/26')
-			document.getElementById("muricaTimeAgo").innerHTML = "We moved to the U.S. " + timeSince(murica) + " ago";
-			document.getElementById("muricaDate").innerHTML = formatDate(murica);
-
-			var smoking = new Date('2013/11/01')
-			document.getElementById("smokingTimeAgo").innerHTML = "I quit smoking " + timeSince(smoking) + " ago";
-			document.getElementById("smokingDate").innerHTML = formatDate(smoking);
-
-			var house = new Date('2013/09/23')
-			document.getElementById("houseTimeAgo").innerHTML = "We got our house " + timeSince(house) + " ago";
-			document.getElementById("houseDate").innerHTML = formatDate(house);
-
-			var riding = new Date('2013/04/30')
-			document.getElementById("ridingTimeAgo").innerHTML = "I started riding " + timeSince(riding) + " ago";
-			document.getElementById("ridingDate").innerHTML = formatDate(riding);
-
-			var ollie = new Date('2012/09/10')
-			document.getElementById("ollieTimeAgo").innerHTML = "Ollie was born " + timeSince(ollie) + " ago";
-			document.getElementById("ollieDate").innerHTML = formatDate(ollie);
-
-			var wedding = new Date('2010/06/26')
-			document.getElementById("weddingTimeAgo").innerHTML = "Jane and I got married " + timeSince(wedding) + " ago";
-			document.getElementById("weddingDate").innerHTML = formatDate(wedding);
-
-			var lily = new Date('2006/12/05') // Based on Metadata from photos.
-			document.getElementById("lilyTimeAgo").innerHTML = "We got Lily " + timeSince(lily) + " ago";
-			document.getElementById("lilyDate").innerHTML = formatDate(lily);
-
-			var jandy = new Date('2006/08/19')
-			document.getElementById("jandyTimeAgo").innerHTML = "Jane and I got together " + timeSince(jandy) + " ago";
-			document.getElementById("jandyDate").innerHTML = formatDate(jandy);
-
-			var smart = new Date('2004/03/31') // Can't remember day.
-			document.getElementById("smartTimeAgo").innerHTML = "I got my first design job " + timeSince(smart) + " ago";
-			document.getElementById("smartDate").innerHTML = formatDate(smart);
-
-			var andy = new Date('1983/05/16')
-			document.getElementById("andyTimeAgo").innerHTML = "Andy is " + timeSince(andy) + " old";
-			document.getElementById("andyDate").innerHTML = "Born " + formatDate(andy);
-		}
-
-		setAndUpdateContent();
-		setInterval(setAndUpdateContent, 1000);
-	</script>
-
 </body>
+
+<script charset="utf-8">
+	for (var milestone in milestones) {
+		var container = document.getElementById("container");
+		var listItem = document.createElement("li");
+		var emojiContainer = document.createElement("p");
+		emojiContainer.classList.add("emoji");
+		var eventHeading = document.createElement("p");
+		var eventDate = document.createElement("p");
+		eventDate.classList.add("small");
+
+		var emoji = document.createTextNode(milestones[milestone][0]);
+		var stringStart = document.createTextNode(milestones[milestone][1]);
+		var date = document.createTextNode(milestones[milestone][2]);
+		var stringEnd = document.createTextNode(milestones[milestone][3]);
+
+		container.appendChild(listItem);
+		listItem.appendChild(emojiContainer);
+		emojiContainer.appendChild(emoji);
+		listItem.appendChild(eventHeading);
+		eventHeading.appendChild(document.createTextNode(milestones[milestone][1] + " " + timeSince(new Date(milestones[milestone][2])) + " " + milestones[milestone][3]));
+		listItem.appendChild(eventDate);
+		eventDate.appendChild(document.createTextNode(formatDate(new Date(new Date(milestones[milestone][2])))));
+	}
+
+	function setAndUpdateContent() {
+		var today = new Date();
+		document.getElementById("emojiClock").innerHTML = emojiClock();
+		document.getElementById("today").innerHTML = formatLongDate(today);
+		document.getElementById("time").innerHTML = formatTime(today);
+	}
+
+	setAndUpdateContent();
+	setInterval(setAndUpdateContent, 1000);
+</script>
+
 </html>
