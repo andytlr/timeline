@@ -55,6 +55,7 @@
 
 	<script charset="utf-8">
 		var milestones = {
+		  "applewatch": ["🍏", "The Apple Watch event is in", "2015/03/09 10:00", ""],
 		  "instagram": ["📷", "I started at Instagram", "2014/10/06", "ago"],
 		  "murica": ["🍟", "We moved to the U.S.", "2014/09/26", "ago"],
 		  "smoking": ["🚬", "I quit smoking", "2013/11/01", "ago"],
@@ -314,12 +315,6 @@
 <body>
 
   <ul id="container">
-		<li>
-			<p class="emoji">🍏</p>
-			<p id="applewatchTimeAgo"></p>
-			<p id="applewatchDate" class="small"></p>
-		</li>
-
     <li>
 			<p id="emojiClock" class="emoji"></p>
 			<p id="today"></p>
@@ -354,10 +349,6 @@
 	}
 
 	function setAndUpdateContent() {
-		var applewatch = new Date('2015/03/09 10:00')
-		document.getElementById("applewatchTimeAgo").innerHTML = "The Apple Watch event is in " + timeSince(applewatch);
-		document.getElementById("applewatchDate").innerHTML = formatDate(applewatch);
-
 		var today = new Date();
 		document.getElementById("emojiClock").innerHTML = emojiClock();
 		document.getElementById("today").innerHTML = formatLongDate(today);
