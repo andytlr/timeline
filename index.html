@@ -44,8 +44,7 @@
 			margin-bottom: 3px;
 		}
 		.emoji {
-			/*position: relative;
-			left: 1px;*/
+
 		}
 		.small {
 			font-size: 0.8em;
@@ -264,47 +263,47 @@
 			<p id="today"></p>
 			<p id="time" class="small"></p>
 		</li>
-
   </ul>
 
-	<script charset="utf-8">
-		for (var milestone in milestones) {
-			var container = document.getElementById("container");
-			var listItem = document.createElement("li");
-			var emojiContainer = document.createElement("p");
-			emojiContainer.classList.add("emoji");
-			var eventHeading = document.createElement("p");
-			var eventDate = document.createElement("p");
-			eventDate.classList.add("small");
-
-			var emoji = document.createTextNode(milestones[milestone][0]);
-			var stringStart = document.createTextNode(milestones[milestone][1]);
-			var date = document.createTextNode(milestones[milestone][2]);
-			var stringEnd = document.createTextNode(milestones[milestone][3]);
-
-			container.appendChild(listItem);
-			listItem.appendChild(emojiContainer);
-			emojiContainer.appendChild(emoji);
-			listItem.appendChild(eventHeading);
-			eventHeading.appendChild(document.createTextNode(milestones[milestone][1] + " " + timeSince(new Date(milestones[milestone][2])) + " " + milestones[milestone][3]));
-			listItem.appendChild(eventDate);
-			eventDate.appendChild(document.createTextNode(formatDate(new Date(new Date(milestones[milestone][2])))));
-		}
-
-		function setAndUpdateContent() {
-			var applewatch = new Date('2015/03/09 10:00')
-			document.getElementById("applewatchTimeAgo").innerHTML = "The Apple Watch event is in " + timeSince(applewatch);
-			document.getElementById("applewatchDate").innerHTML = formatDate(applewatch);
-
-			var today = new Date();
-			document.getElementById("emojiClock").innerHTML = emojiClock();
-			document.getElementById("today").innerHTML = formatDate(today);
-			document.getElementById("time").innerHTML = formatTime(today);
-		}
-
-		setAndUpdateContent();
-		setInterval(setAndUpdateContent, 1000);
-	</script>
-
 </body>
+
+<script charset="utf-8">
+	for (var milestone in milestones) {
+		var container = document.getElementById("container");
+		var listItem = document.createElement("li");
+		var emojiContainer = document.createElement("p");
+		emojiContainer.classList.add("emoji");
+		var eventHeading = document.createElement("p");
+		var eventDate = document.createElement("p");
+		eventDate.classList.add("small");
+
+		var emoji = document.createTextNode(milestones[milestone][0]);
+		var stringStart = document.createTextNode(milestones[milestone][1]);
+		var date = document.createTextNode(milestones[milestone][2]);
+		var stringEnd = document.createTextNode(milestones[milestone][3]);
+
+		container.appendChild(listItem);
+		listItem.appendChild(emojiContainer);
+		emojiContainer.appendChild(emoji);
+		listItem.appendChild(eventHeading);
+		eventHeading.appendChild(document.createTextNode(milestones[milestone][1] + " " + timeSince(new Date(milestones[milestone][2])) + " " + milestones[milestone][3]));
+		listItem.appendChild(eventDate);
+		eventDate.appendChild(document.createTextNode(formatDate(new Date(new Date(milestones[milestone][2])))));
+	}
+
+	function setAndUpdateContent() {
+		var applewatch = new Date('2015/03/09 10:00')
+		document.getElementById("applewatchTimeAgo").innerHTML = "The Apple Watch event is in " + timeSince(applewatch);
+		document.getElementById("applewatchDate").innerHTML = formatDate(applewatch);
+
+		var today = new Date();
+		document.getElementById("emojiClock").innerHTML = emojiClock();
+		document.getElementById("today").innerHTML = formatDate(today);
+		document.getElementById("time").innerHTML = formatTime(today);
+	}
+
+	setAndUpdateContent();
+	setInterval(setAndUpdateContent, 1000);
+</script>
+
 </html>
