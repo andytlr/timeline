@@ -1,6 +1,19 @@
+function currentTime() {
+  var rightNow = new Date()
+
+  var year = rightNow.getFullYear();
+  var month = rightNow.getMonth() + 1; // Months are zero based
+  var day = rightNow.getDate();
+  var hours = rightNow.getHours();
+  var minutes = rightNow.getMinutes();
+  var seconds = rightNow.getSeconds();
+
+  return year + "/" + month + "/" + day + " " + hours + ":" + minutes + ":" + seconds
+}
+
 var milestones = {
+  // "today": [emojiClock(), " ", currentTime(), " "],
   "instagram": ["📷", "I started at Instagram", "2014/10/06", "ago"],
-  // "test": ["🍏", "Test event is in", "2015/03/10 7:55", " "],
   "murica": ["🍟", "We moved to the U.S.", "2014/09/26", "ago"],
   "smoking": ["🚬", "I quit smoking", "2013/11/01", "ago"],
   "house": ["🏡", "We got our house", "2013/09/23", "ago"],
@@ -13,16 +26,6 @@ var milestones = {
   "smart": ["💼", "I got my first design job", "2004/03/31", "ago"],
   "andy": ["👨", "Andy is", "1983/05/16", "old"]
 }
-
-// Console log the dates, sorted.
-var dates = []
-for (var milestone in milestones) {
-  dates.push(new Date(milestones[milestone][2]) - new Date())
-}
-dates.sort().reverse()
-console.log(
-  dates
-)
 
 function timeSince(date) {
 
