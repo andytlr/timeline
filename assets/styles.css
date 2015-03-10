@@ -1,0 +1,43 @@
+body {
+  padding: 5%;
+  font-family: sans-serif;
+  text-align: center;
+  color: #565a5c;
+  line-height: 1.2;
+}
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+li {
+  margin-bottom: 25px;
+  padding: 2px 0 5px 0;
+  background: #fff;
+}
+li:before {
+  content: "";
+  width: 1px;
+  height: 120px;
+  z-index: -1;
+  position: absolute;
+  display: block;
+  background: #dadada;
+  left: 0; right: 0;
+  margin: auto;
+}
+li:last-of-type:before {
+  background: blue;
+  display: none;
+}
+p {
+  margin: 0.5em;
+  margin-bottom: 3px;
+}
+.emoji {
+
+}
+.small {
+  font-size: 0.8em;
+  color: #abadae;
+  margin-top: 0;
+}
