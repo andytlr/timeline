@@ -12,7 +12,6 @@ function currentTime() {
 }
 
 var milestones = {
-  "drones": ["🐟", "The 10th anniversary of Wait Long by the River… is in", "2015/04/18", " "],
   // "today": [emojiClock(), " ", currentTime(), " "],
   "instagram": ["📷", "I started at Instagram", "2014/10/06", "ago"],
   "murica": ["🍟", "We moved to the U.S.", "2014/09/26", "ago"],
