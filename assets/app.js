@@ -13,6 +13,7 @@ function currentTime() {
 
 var milestones = {
   // "today": [emojiClock(), " ", currentTime(), " "],
+  "instagram": ["🏊🏻", "I started swimming", "2017/06/13", "ago"],
   "instagram": ["📷", "I started at Instagram", "2014/10/06", "ago"],
   "murica": ["🍟", "We moved to the U.S.", "2014/09/26", "ago"],
   "smoking": ["🚬", "I quit smoking", "2013/11/01", "ago"],
@@ -20,11 +21,11 @@ var milestones = {
   "riding": ["🚴", "I started riding", "2013/04/30", "ago"],
   "ollie": ["👶", "Ollie was born", "2012/09/10", "ago"],
   "wedding": ["💒", "Jane and I got married", "2010/06/26", "ago"],
-  // "iphone": ["📱", "I got the original iPhone", "2008/04/21", "ago"],
+  "iphone": ["📱", "I got the original iPhone", "2008/04/21", "ago"],
   "lily": ["🐩", "We got Lily", "2006/12/05", "ago"],
   "jandy": ["💑", "Jane and I got together", "2006/08/19", "ago"],
   "smart": ["💼", "I got my first design job", "2004/03/31", "ago"],
-  "andy": ["👨", "Andy is", "1983/05/16", "old"]
+  "andy": ["👨", "Andy is", "1983/05/26", "old"]
 }
 
 function timeSince(date) {
