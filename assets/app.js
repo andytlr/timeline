@@ -13,7 +13,7 @@ function currentTime() {
 
 var milestones = {
   // "today": [emojiClock(), " ", currentTime(), " "],
-  "instagram": ["🏊🏻", "I started swimming", "2017/06/13", "ago"],
+  "swimming": ["🏊🏻", "I started swimming", "2017/06/13", "ago"],
   "instagram": ["📷", "I started at Instagram", "2014/10/06", "ago"],
   "murica": ["🍟", "We moved to the U.S.", "2014/09/26", "ago"],
   "smoking": ["🚬", "I quit smoking", "2013/11/01", "ago"],
