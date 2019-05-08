@@ -13,6 +13,7 @@ function currentTime() {
 
 var milestones = {
   // "today": [emojiClock(), " ", currentTime(), " "],
+  "oz": ["🇦🇺", "We moved home", "2018/11/22", "ago"],
   "romeo": ["💞", "I got the Romanceür", "2018/07/27", "ago"],
   "pots": ["🍶", "I started making pots", "2018/01/04", "ago"],
   "cat": ["🐈", "We got Abigail", "2017/08/01", "ago"],
