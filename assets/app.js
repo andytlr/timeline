@@ -28,7 +28,7 @@ var milestones = {
   "lily": ["🐩", "We got Lily", "2006/12/05", "ago"],
   "jandy": ["💑", "Jane and I got together", "2006/08/19", "ago"],
   "smart": ["💼", "I got my first design job", "2004/03/31", "ago"],
-  "andy": ["👨", "Andy is", "1983/05/26", "old"]
+  "andy": ["👨", "Andy is", "1983/05/16", "old"]
 }
 
 function timeSince(date) {
